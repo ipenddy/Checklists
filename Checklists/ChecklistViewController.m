@@ -6,14 +6,15 @@
 //  Copyright © 2015年 penddy. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ChecklistViewController.h"
 #import "ChecklistItem.h"
+#import "Checklist.h"
 
-@interface ViewController ()
+@interface ChecklistViewController ()
 
 @end
 
-@implementation ViewController{
+@implementation ChecklistViewController{
     NSMutableArray *_items;
 }
 - (void)loadChecklistItems{
@@ -36,6 +37,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = self.checklist.name;
     // Do any additional setup after loading the view, typically from a nib.
     
 //    NSLog(@"文件夹的目录是: %@",[self documentsDirectory]);

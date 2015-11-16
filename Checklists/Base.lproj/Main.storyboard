@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="i0P-5t-hHO">
             <objects>
-                <tableViewController id="Ugs-FJ-TnK" userLabel="View Controller" customClass="ViewController" sceneMemberID="viewController">
+                <tableViewController id="Ugs-FJ-TnK" userLabel="View Controller" customClass="ChecklistViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="x4o-cX-big">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                             <outlet property="delegate" destination="Ugs-FJ-TnK" id="bGF-vh-Wcq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Checklists" id="MWF-Bv-unA">
+                    <navigationItem key="navigationItem" title="Checklist" id="MWF-Bv-unA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sS2-Hc-q6O">
                             <connections>
                                 <segue destination="t1p-dA-QjP" kind="modal" identifier="AddItem" id="oRU-ww-9xp"/>
@@ -71,10 +71,10 @@
                             <tableViewSection id="lGy-4U-iTa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="FDG-ZH-Msi">
-                                        <rect key="frame" x="0.0" y="99" width="400" height="44"/>
+                                        <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="FDG-ZH-Msi" id="JwF-mh-iu9">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="18" clearButtonMode="whileEditing" id="fqk-6J-yeo">
@@ -130,12 +130,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ugs-FJ-TnK" kind="relationship" relationship="rootViewController" id="HEy-2e-POY"/>
+                        <segue destination="jLO-Bh-mqI" kind="relationship" relationship="rootViewController" id="2sR-sV-2Ae"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvO-sd-oAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292.80000000000001" y="-22.719999999999999"/>
+            <point key="canvasLocation" x="-100" y="-23"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aau-Wu-tu2">
@@ -154,6 +154,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqC-6X-7s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1196.8" y="-22.719999999999999"/>
+        </scene>
+        <!--Checklists-->
+        <scene sceneID="LBW-WY-Avp">
+            <objects>
+                <tableViewController id="jLO-Bh-mqI" customClass="ViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ojx-zO-xHx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="jLO-Bh-mqI" id="JN9-8B-l1U"/>
+                            <outlet property="delegate" destination="jLO-Bh-mqI" id="MQX-nX-dTq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="R6q-LP-fLV"/>
+                    <connections>
+                        <segue destination="Ugs-FJ-TnK" kind="push" identifier="ShowChecklist" id="cfO-f2-mOM"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qe-Pa-hgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="343" y="-23"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
