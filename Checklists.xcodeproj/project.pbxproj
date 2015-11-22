@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A0100F91BFA0468002E2401 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0100F81BFA0468002E2401 /* ViewController.m */; };
 		3A0100FC1BFA1836002E2401 /* Checklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0100FB1BFA1836002E2401 /* Checklist.m */; };
+		3A0100FF1BFABF09002E2401 /* ListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0100FE1BFABF09002E2401 /* ListDetailViewController.m */; };
 		3ABCBA9C1BEF8E9900EB5063 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABCBA9B1BEF8E9900EB5063 /* main.m */; };
 		3ABCBA9F1BEF8E9900EB5063 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABCBA9E1BEF8E9900EB5063 /* AppDelegate.m */; };
 		3ABCBAA21BEF8E9900EB5063 /* ChecklistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABCBAA11BEF8E9900EB5063 /* ChecklistViewController.m */; };
@@ -43,6 +44,8 @@
 		3A0100F81BFA0468002E2401 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
 		3A0100FA1BFA1836002E2401 /* Checklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checklist.h; sourceTree = "<group>"; };
 		3A0100FB1BFA1836002E2401 /* Checklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checklist.m; sourceTree = "<group>"; };
+		3A0100FD1BFABF09002E2401 /* ListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDetailViewController.h; sourceTree = "<group>"; };
+		3A0100FE1BFABF09002E2401 /* ListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDetailViewController.m; sourceTree = "<group>"; };
 		3ABCBA971BEF8E9900EB5063 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABCBA9B1BEF8E9900EB5063 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3ABCBA9D1BEF8E9900EB5063 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 			children = (
 				3A0100F71BFA0468002E2401 /* ViewController.h */,
 				3A0100F81BFA0468002E2401 /* ViewController.m */,
+				3A0100FD1BFABF09002E2401 /* ListDetailViewController.h */,
+				3A0100FE1BFABF09002E2401 /* ListDetailViewController.m */,
 				3ABCBA9D1BEF8E9900EB5063 /* AppDelegate.h */,
 				3ABCBA9E1BEF8E9900EB5063 /* AppDelegate.m */,
 				3ABCBAA01BEF8E9900EB5063 /* ChecklistViewController.h */,
@@ -293,6 +298,7 @@
 				3A0100F91BFA0468002E2401 /* ViewController.m in Sources */,
 				3ABCBAA21BEF8E9900EB5063 /* ChecklistViewController.m in Sources */,
 				3ABCBA9F1BEF8E9900EB5063 /* AppDelegate.m in Sources */,
+				3A0100FF1BFABF09002E2401 /* ListDetailViewController.m in Sources */,
 				3ABCBA9C1BEF8E9900EB5063 /* main.m in Sources */,
 				3ABCBAD21BF748BF00EB5063 /* ItemDetailViewController.m in Sources */,
 				3ABCBACF1BF7199C00EB5063 /* ChecklistItem.m in Sources */,
