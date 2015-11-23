@@ -20,7 +20,6 @@
 @end
 
 @interface ItemDetailViewController : UITableViewController<UITextFieldDelegate>
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;

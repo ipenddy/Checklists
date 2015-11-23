@@ -9,6 +9,8 @@
 #import "ChecklistItem.h"
 
 @implementation ChecklistItem
+
+
 - (void) toggleChecked{
     self.checked = !self.checked;
 }

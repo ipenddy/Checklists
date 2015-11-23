@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChecklistItem.h"
 
 @class ListDetailViewController;
 @class Checklist;
@@ -20,8 +21,9 @@
 
 @interface ListDetailViewController : UITableViewController<UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @property(nonatomic,weak)IBOutlet UITextField *textField;
-@property(nonatomic,weak)IBOutlet UIBarButtonItem *doneBarButton;
+//@property(nonatomic,weak)IBOutlet UIBarButtonItem *doneBarButton;
 @property(nonatomic,weak)id <ListDetailViewControllerDelegate> delegate;
 
 @property(nonatomic,strong)Checklist *checklistToEdit;

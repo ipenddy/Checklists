@@ -23,7 +23,7 @@
         self.title = @"Edit Checklist";
         self.textField.text = self.checklistToEdit.name;
         self.doneBarButton.enabled = YES;
-        NSLog(@"the button is %@",self.doneBarButton.enabled?@"YES":@"NO");
+//        NSLog(@"the button is %@",self.doneBarButton.enabled?@"YES":@"NO");
     }
     
     // Uncomment the following line to preserve selection between presentations.
@@ -65,9 +65,9 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(nonnull NSString *)string{
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
 
-    self.doneBarButton.enabled = YES;
-//    self.doneBarButton.enabled = ([newText length] > 0);
-    NSLog(@"Change the text!the text is %@,the button is %@,the lenght is %d",newText,self.doneBarButton.enabled?@"YES":@"NO",[newText length]);
+//    self.doneBarButton.enabled = YES;
+    self.doneBarButton.enabled = ([newText length] > 0);
+//    NSLog(@"Change the text!the text is %@,the button is %@,the lenght is %d",newText,self.doneBarButton.enabled?@"YES":@"NO",[newText length]);
     return YES;
 }
 

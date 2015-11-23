@@ -48,7 +48,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Checklist Name" id="AYy-0X-rvq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="g0x-xm-UuS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="g0x-xm-UuS">
+                            <connections>
+                                <segue destination="t1p-dA-QjP" kind="modal" identifier="AddItem" id="Rww-sg-8ci"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBK-FH-TDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,6 +111,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="VJE-sE-osO" id="ibu-XO-gjP"/>
                         <outlet property="textField" destination="fqk-6J-yeo" id="IWR-Pl-bhY"/>
                     </connections>
                 </tableViewController>
@@ -153,6 +158,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t1p-dA-QjP" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="1HA-zk-DMO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kjL-Eg-2yu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -241,11 +247,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="xeB-ek-oeP">
                             <connections>
-                                <action selector="done:" destination="WoV-Uf-gHl" id="e1j-xY-K4c"/>
+                                <action selector="doneBarButton:" destination="WoV-Uf-gHl" id="pgw-Yi-Pgr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="xeB-ek-oeP" id="pdM-GH-3BD"/>
                         <outlet property="textField" destination="OeK-1A-BXi" id="PC4-bM-hI0"/>
                     </connections>
                 </tableViewController>
@@ -254,4 +261,7 @@
             <point key="canvasLocation" x="1197" y="716"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rww-sg-8ci"/>
+    </inferredMetricsTieBreakers>
 </document>

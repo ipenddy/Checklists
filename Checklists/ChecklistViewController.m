@@ -14,65 +14,14 @@
 
 @end
 
-@implementation ChecklistViewController{
-    NSMutableArray *_items;
-}
-- (void)loadChecklistItems{
-    NSString *path = [self dataFilePath];
-    if([[NSFileManager defaultManager]fileExistsAtPath:path]){
-        NSData *data = [[NSData alloc]initWithContentsOfFile:path];
-        
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
-        _items = [unarchiver decodeObjectForKey:@"ChecklistItems"];
-        [unarchiver finishDecoding];
-    }else{
-        _items = [[NSMutableArray alloc]initWithCapacity:20];
-    }
-}
-- (id)initWithCoder:(NSCoder *)aDecoder{
-    if((self = [super initWithCoder:aDecoder])){
-        [self loadChecklistItems];
-    }
-    return self;
-}
+@implementation ChecklistViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = self.checklist.name;
-    // Do any additional setup after loading the view, typically from a nib.
-    
-//    NSLog(@"文件夹的目录是: %@",[self documentsDirectory]);
-//    NSLog(@"数据文件的最终路径是: %@",[self dataFilePath]);
-//    
-//    _items = [[NSMutableArray alloc]initWithCapacity:20];
-//    
-//    ChecklistItem *item;
-//    
-//    item = [[ChecklistItem alloc]init];
-//    item.text = @"观看嫦娥飞天和玉兔升空的视频";
-//    item.checked = NO;
-//    [_items addObject:item];
-//    
-//    item = [[ChecklistItem alloc]init];
-//    item.text = @"了解Sony a7和MBP的价格";
-//    item.checked = NO;
-//    [_items addObject:item];
-//
-//    item = [[ChecklistItem alloc]init];
-//    item.text = @"复习苍老师的经典视频教程";
-//    item.checked = NO;
-//    [_items addObject:item];
-//    
-//    item = [[ChecklistItem alloc]init];
-//    item.text = @"去电影院看地心引力";
-//    item.checked = NO;
-//    [_items addObject:item];
-//    
-//    item = [[ChecklistItem alloc]init];
-//    item.text = @"看西甲巴萨新败的比赛回放";
-//    item.checked = NO;
-//    [_items addObject:item];
-    
+
     
 }
 
@@ -83,24 +32,14 @@
     return documentsDirectory;
 }
 
-- (NSString *)dataFilePath{
-    return [[self documentsDirectory]stringByAppendingPathComponent:@"Checklists.plist"];
-}
 
--(void)saveChecklistItems{
-    NSMutableData *data = [[NSMutableData alloc]init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
-    [archiver encodeObject:_items forKey:@"ChecklistItems"];
-    [archiver finishEncoding];
-    [data writeToFile:[self dataFilePath] atomically:YES];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_items count];
+    return [self.checklist.items count];
 }
 
 -(void) configureCheckmarkForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item{
@@ -123,7 +62,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChecklistItem"];
-    ChecklistItem *item = _items[indexPath.row];
+    ChecklistItem *item = self.checklist.items[indexPath.row];
 
     [self configureTextForCell:cell withCheckListItem:item];
     [self configureCheckmarkForCell:cell withChecklistItem:item];
@@ -132,16 +71,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    ChecklistItem *item = _items[indexPath.row];
+    ChecklistItem *item = self.checklist.items[indexPath.row];
     [item toggleChecked];
     [self configureCheckmarkForCell:cell withChecklistItem:item];
-    [self saveChecklistItems];
+//    [self saveChecklistItems];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    [_items removeObjectAtIndex:indexPath.row];
-    [self saveChecklistItems];
+    [self.checklist.items removeObjectAtIndex:indexPath.row];
+//    [self saveChecklistItems];
     
     NSArray *indexPaths = @[indexPath];
     
@@ -153,28 +92,28 @@
 }
 
 -(void)itemDetailViewController:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistItem *)item{
-    NSInteger newRowIndex = [_items count];
-    [_items addObject:item];
+    NSInteger newRowIndex = [self.checklist.items count];
+    [self.checklist.items addObject:item];
 //    NSLog(@"The Checked is %@ ,the text is %@",item.checked?@"YES":@"NO",item.text);
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    [self saveChecklistItems];
+//    [self saveChecklistItems];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)itemDetailViewController:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item{
-    NSInteger index = [_items indexOfObject:item];
+    NSInteger index = [self.checklist.items indexOfObject:item];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     [self configureTextForCell:cell withCheckListItem:item];
-    [self saveChecklistItems];
+//    [self saveChecklistItems];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -194,7 +133,7 @@
         controller.delegate = self;
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        controller.itemToEdit = _items[indexPath.row];
+        controller.itemToEdit = self.checklist.items[indexPath.row];
     }
 }
 @end
