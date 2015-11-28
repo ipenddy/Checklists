@@ -56,6 +56,7 @@
 }
 
 - (IBAction)cancel:(id)sender{
+    NSLog(@"Enter the cancel progress!");    
     [self.delegate listDetailViewControllerDidCancel:self];
 }
 
@@ -75,6 +76,9 @@
 }
 
 -(NSIndexPath *)tableview:(UITableView *)tableview willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"The Section is %d,the Row is %d!",indexPath.section,indexPath.row
+          );
     if(indexPath.section == 1){
         return indexPath;
     }else{

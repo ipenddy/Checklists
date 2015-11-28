@@ -51,12 +51,15 @@
     }else{
         label.text = @"";
     }
-    NSLog(@"The checked label is %@,the checked is %@",label.text,item.checked?@"YES":@"NO");
+//    NSLog(@"The checked label is %@,the checked is %@",label.text,item.checked?@"YES":@"NO");
+    label.textColor = self.view.tintColor;
 }
 
 -(void) configureTextForCell:(UITableViewCell *)cell withCheckListItem:(ChecklistItem *)item{
+    
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     label.text = item.text;
+//    label.text = [NSString stringWithFormat:@"%ld:%@",(long)item.itemId,item.text];
 }
 
 
@@ -121,7 +124,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if ([segue.identifier isEqualToString:@"AddItem"]) {
-        NSLog(@"The delegate is running.");
         UINavigationController *navigationController = segue.destinationViewController;
         
         ItemDetailViewController *controller = (ItemDetailViewController *)navigationController.topViewController;

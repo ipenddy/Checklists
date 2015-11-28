@@ -23,9 +23,26 @@
     // Override point for customization after application launch.
     _dataModel = [[DataModel alloc]init];
     
+// iOS 8.0之后通知需要注册授权
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil];
+    [application registerUserNotificationSettings:settings];
+    
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     ViewController *controller = navigationController.viewControllers[0];
     controller.dataModel = _dataModel;
+    
+    //local notification
+    
+//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:10.0];
+//    
+//    UILocalNotification *localNotification = [[UILocalNotification alloc]init];
+//    
+//    localNotification.fireDate = date;
+//    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+//    localNotification.alertBody = @"2016年快到了，马上有钱！";
+//    localNotification.soundName = UILocalNotificationDefaultSoundName;
+//    
+//    [[UIApplication sharedApplication]scheduleLocalNotification:localNotification];
     
     return YES;
 }
@@ -60,6 +77,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     [self saveData];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+    NSLog(@"didReceivedLocalNotifaction %@",notification);
 }
 
 @end

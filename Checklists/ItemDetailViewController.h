@@ -24,6 +24,13 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
+@property(nonatomic,weak)IBOutlet UISwitch *switchControl;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
+
+
+
 @property (weak,nonatomic) id <ItemDetailViewControllerDelegate> delegate;
 
 @property (nonatomic,strong) ChecklistItem *itemToEdit;
